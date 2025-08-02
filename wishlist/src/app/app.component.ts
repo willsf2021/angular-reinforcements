@@ -20,20 +20,9 @@ export class AppComponent {
   ];
 
   listFilter: any = '0';
-
-  newWishText = '';
-
   title = 'wishlist';
 
   get visibleItems(): WishItem[] {
     return this.items.filter(filter[this.listFilter])
-  }
-
-  addNewWish() {
-    this.items.push(new WishItem(this.newWishText)); // todo: add wish to items arrays
-    this.newWishText = ''; // clear the textbox
-  }
-  toggleItem(item: WishItem) {
-    item.isComplete = !item.isComplete;
   }
 }
