@@ -1,43 +1,32 @@
 import { Component } from '@angular/core';
 import { WishItem } from 'src/shared/models/wishItem';
 
+const filter = [
+  (item: WishItem) => item,
+  (item: WishItem) => !item.isComplete,
+  (item: WishItem) => item.isComplete,
+];
+
 @Component({
-  // @ = Decorator
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   items: WishItem[] = [
-    new WishItem('To Learn Angular'),
+    new WishItem('Learn Angular'),
     new WishItem('Get Coffee', true),
     new WishItem('Find grass that cuts itself'),
   ];
 
-  listFilter: string = '0';
+  listFilter: any = '0';
 
   newWishText = '';
 
   title = 'wishlist';
 
-  visibleItems: WishItem[] = this.items;
-
-  filterChanged(value: any) {
-    switch (value) {
-      case '0':
-        this.visibleItems = this.items;
-        break;
-      case '1':
-        this.visibleItems = this.items.filter(
-          (item) => !item.isComplete
-        );
-        break;
-      case '2':
-        this.visibleItems = this.items.filter(
-          (item) => item.isComplete
-        );
-        break;
-    }
+  get visibleItems(): WishItem[] {
+    return this.items.filter(filter[this.listFilter])
   }
 
   addNewWish() {
@@ -46,6 +35,5 @@ export class AppComponent {
   }
   toggleItem(item: WishItem) {
     item.isComplete = !item.isComplete;
-    console.log(item);
   }
 }

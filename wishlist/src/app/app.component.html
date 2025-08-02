@@ -23,7 +23,7 @@
 
   <div class="row mt-3">
     <div class="col-sm-2">
-      <select class="form-select" [(ngModel)]="listFilter" (ngModelChange)="filterChanged($event)">
+      <select class="form-select" [(ngModel)]="listFilter" >
         <option value="0">All</option>
         <option value="1">Unfulfilled</option>
         <option value="2">Fulfilled</option>
@@ -39,7 +39,7 @@
     <ng-template #showItems>
       <ul class="wish-list">
         <li *ngFor="let item of visibleItems; index as ii">
-          <!-- for of loop | there is now allowed to put two directives insides same element HTML -->
+          <!-- for of loop | there is not allowed to put two directives insides same element HTML -->
           <!-- * is directive -->
           <div class="form-check">
             <label for="form-check-label">
