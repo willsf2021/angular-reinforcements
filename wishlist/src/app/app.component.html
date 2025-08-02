@@ -6,15 +6,17 @@
 
   <ng-template #showItems>
     <ul class="wish-list">
-      <li *ngFor="let item of items"> <!-- for of loop -->
+      <li *ngFor="let item of items; index as ii">
+        <!-- for of loop | there is now allowed to put two directives insides same element HTML -->
         <!-- * is directive -->
         <div class="form-check">
           <label for="form-check-label">
-            <input type="checkbox" type="checkbox"> {{item.wishText}}
+            <input class="checkbox" type="checkbox" [checked]="item.isComplete" [attr.data-index]="ii">
+            <!-- Binding data with [] -->
+            {{item.wishText}}
           </label>
         </div>
       </li>
     </ul>
   </ng-template>
-
 </div>
