@@ -11,8 +11,10 @@
         <!-- * is directive -->
         <div class="form-check">
           <label for="form-check-label">
-            <input class="checkbox" type="checkbox" [checked]="item.isComplete" [attr.data-index]="ii">
+            <input class="checkbox" type="checkbox" [checked]="item.isComplete" [attr.data-index]="ii"
+              (click)="toggleItem(item)">
             <!-- Binding data with [] -->
+
             {{item.wishText}}
           </label>
         </div>
