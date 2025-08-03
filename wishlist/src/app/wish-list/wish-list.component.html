@@ -4,23 +4,9 @@
 
 <ng-template #showItems>
   <ul class="wish-list">
-    <li *ngFor="let item of wishes; index as ii">
-      <!-- for of loop | there is not allowed to put two directives insides same element HTML -->
-      <!-- * is directive -->
-      <div class="form-check">
-        <label for="form-check-label">
-          <input
-            class="checkbox"
-            type="checkbox"
-            [checked]="item.isComplete"
-            [attr.data-index]="ii"
-            (click)="toggleItem(item)"
-          />
-          <!-- Binding data with [] -->
-
-          {{ item.wishText }}
-        </label>
-      </div>
-    </li>
+    <wish-list-item 
+    *ngFor="let wish of wishes"
+    [wish]="wish"
+    > </wish-list-item>
   </ul>
 </ng-template>

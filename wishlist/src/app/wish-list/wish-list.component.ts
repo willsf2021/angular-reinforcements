@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { WishItem } from 'src/shared/models/wishItem';
 
+
 @Component({
   selector: 'wish-list',
   templateUrl: './wish-list.component.html',
@@ -9,7 +10,4 @@ import { WishItem } from 'src/shared/models/wishItem';
 
 export class WishListComponent {
   @Input() wishes: WishItem[] = [];
-  toggleItem(item: WishItem) {
-    item.isComplete = !item.isComplete;
-  }
 }
